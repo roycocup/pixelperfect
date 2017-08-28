@@ -3,3 +3,4 @@
 $LOAD_PATH << './lib'
 require  "main.rb"
 main = Main.new(ARGV[0])
+main.run
