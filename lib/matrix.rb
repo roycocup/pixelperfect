@@ -2,18 +2,33 @@
 
 # The object that abstracts the matrix for the display.
 class Matrix
-  attr_accessor :cols, :rows, :grid
 
   COLOR_WHITE = 0
+  COLOR_C = 'C'
 
-  def initialize(cols, rows)
-    @cols = cols
-    @rows = rows
+  def initialize()
     @grid = {}
-    init_grid
+    @created = false;
   end
 
-  def init_grid
+  def setGrid(pos, value)
+    @grid[pos] = value
+  end
+
+  def getGrid(pos)
+    return @grid[pos]
+  end
+
+  def execute(command)
+	  command.execute()
+  end
+
+  # Initial setup and also call for I (image) command
+  def reset(cols, rows)
+    @cols = cols.to_i
+    @rows = rows.to_i
+    @created = true;
+    
     x = 0
     until x > @cols
       y = 0
@@ -23,14 +38,7 @@ class Matrix
       end
       x = x+1
     end
-  end
 
-  def setGrid(pos, value)
-    @grid[pos] = value
-  end
-
-  def getGrid(pos)
-    return @grid[pos]
   end
 
 end
