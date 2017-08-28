@@ -1,4 +1,4 @@
-require "Command"
+require_relative "Command"
 
 # Create a new M x N image with all pixels coloured white (O).
 class ImageCommand < Command

@@ -1,6 +1,6 @@
 
-require_relative "Grid"
-require "image_cmd.rb"
+require_relative "grid"
+require_relative "image_cmd.rb"
 
 class Main
 	attr_accessor :file
@@ -18,7 +18,7 @@ class Main
 		@file.each_line do |line|
 			case line[0].upcase
 			when 'I' then @image_cmd.execute(line)
-			else puts 'Sorry, the command is not available'
+			else puts "Sorry, the command #{line[0]} is not available. Maybe in the future... "
 			end
 		end
 	end
