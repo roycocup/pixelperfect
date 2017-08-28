@@ -44,6 +44,9 @@ class Matrix
     unless @created
       raise "The pixel matrix (image) has not been created yet. You need to pass the I command"
     end
+    print "\n\n\r"
+    @rows.times {print '#'}
+    print "\n\n\r"
 
     x = 0
     @grid.each do |key, value|
@@ -56,6 +59,13 @@ class Matrix
       end  
     end  
     
+  end
+
+  def paint(col, row, colour)
+    c,r = col.to_i, row.to_i
+    if @grid.has_key?("#{c}-#{r}") then
+      setPixel("#{c}-#{r}", colour.to_s)
+    end
   end
 
 end
