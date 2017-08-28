@@ -1,9 +1,9 @@
 class Command
-    attr_accessor :statement
+  attr_accessor :statement
 
-    @cmd = []
-    
-    def execute(statement)
-        raise NotImplementedError
-    end
+  @cmd = []
+
+  def execute(_statement)
+    raise NotImplementedError
+  end
 end
