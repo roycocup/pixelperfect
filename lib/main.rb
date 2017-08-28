@@ -1,27 +1,32 @@
 
 require_relative "Grid"
+require "image_cmd.rb"
 
-# Main class for program
 class Main
 	attr_accessor :file
 
 	def initialize(file)
 		@file = File.new(file)
+		@image_cmd = ImageCommand.new
 	end
 
 	def run()
+		interpret_instructions()
+	end
+
+	def interpret_instructions()
 		@file.each_line do |line|
-			interpret_instructions(line)
+			case line[0].upcase
+			when 'I' then @image_cmd.execute(line)
+			else puts 'Sorry, the command is not available'
+			end
 		end
 	end
 
-	def interpret_instructions(instructions)
-		i = 0
-		instructions.split(' ').each() do |cmd|
-			puts "#{i} #{cmd}"
-			i = i+1
+	def package_command(line)
+		line.split(' ').each() do |cmd|
+			Command.new(cmd)
 		end
-
 	end
 
 end
