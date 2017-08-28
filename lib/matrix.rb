@@ -2,43 +2,60 @@
 
 # The object that abstracts the matrix for the display.
 class Matrix
+  attr_accessor :cols, :rows
 
   COLOR_WHITE = 0
   COLOR_C = 'C'
 
   def initialize()
     @grid = {}
-    @created = false;
+    @created = false
+    @cols, @rows = 0, 0
   end
 
-  def setGrid(pos, value)
+  def setPixel(pos, value)
     @grid[pos] = value
   end
 
-  def getGrid(pos)
+  def getPixel(pos)
     return @grid[pos]
-  end
-
-  def execute(command)
-	  command.execute()
   end
 
   # Initial setup and also call for I (image) command
   def reset(cols, rows)
-    @cols = cols.to_i
-    @rows = rows.to_i
+
+    @cols = cols.to_i.abs
+    @rows = rows.to_i.abs
     @created = true;
     
     x = 0
     until x > @cols
       y = 0
       until y > @rows
-        setGrid("#{x}-#{y}", COLOR_WHITE)
+        setPixel("#{x}-#{y}", COLOR_WHITE)
         y = y+1
       end
       x = x+1
     end
 
+  end
+
+  def show
+    unless @created
+      raise "The pixel matrix (image) has not been created yet. You need to pass the I command"
+    end
+
+    x = 0
+    @grid.each do |key, value|
+      print value.to_s
+      if x >= cols then
+        print "\n\r"
+        x = 0
+      else
+        x = x + 1
+      end  
+    end  
+    
   end
 
 end
