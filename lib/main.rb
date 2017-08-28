@@ -26,6 +26,7 @@ class Main
       when 'I' then ImageCommand.new(line, @matrix)
       when 'S' then ShowCommand.new(line, @matrix)
       when 'L' then PaintCommand.new(line, @matrix)
+      when 'V' || 'H' then LineCommand.new(line, @matrix)
       else puts "Sorry, the command #{line[0]} is not available. Maybe in the future... "
       end
     end

@@ -68,4 +68,11 @@ class Matrix
     end
   end
 
+  def line(orientation, direction, point1, point2, colour)
+    if orientation.upcase == 'V'
+      key = ""
+    else
+    end
+  end
+
 end
