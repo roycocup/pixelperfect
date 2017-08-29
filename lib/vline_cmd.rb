@@ -1,21 +1,24 @@
 require_relative 'Command'
-require 'rubygems'
-require 'vector2d'
 
-# Draw a line
+# Draw a line on a specific column
 class VLineCommand < Command
   
   def execute
-    x1 = @params[1]
-    x2 = @params[1]
-    y1 = @params[2]
-    y2 = @params[3]
-    colour = @params[4]
+	colour = @params[4]
 
-    v1 = vector2d(x1, y1)
-    v2 = vector2d(x2, y2)
+    rows = (@params[2] .. @params[3]).to_a
+	num_rows = rows.count
+	col = @params[1]
+	# create as many duplications of cols as rows.count
+	cols = [col].cycle(num_rows).to_a
 
-    obj.line(v1, v2, colour)
+	points = []
+
+	num_rows.times do |i|
+	  points[i] = [cols[i], rows[i]]
+	end
+
+    obj.line(points, colour)
   end
 
   
