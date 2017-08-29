@@ -68,11 +68,10 @@ class Matrix
     end
   end
 
-  def line(orientation, direction, point1, point2, colour)
-    if orientation.upcase == 'V'
-      key = ""
-    else
-    end
+  # This function takes 2 vectors and "paints" every pixel between them (inclusive)
+  def line(v1, v2, colour)
+    mag = v1 - v2
+    puts mag.to_i
   end
 
 end
