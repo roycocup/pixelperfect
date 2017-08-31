@@ -4,8 +4,8 @@ require_relative 'Command'
 class ImageCommand < Command
 
   def execute
-    obj.reset(@params[1], @params[2])
+	obj.reset(@params[1], @params[2])
   end
 
-  
+
 end
